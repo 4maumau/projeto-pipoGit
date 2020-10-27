@@ -9,13 +9,20 @@ public class GameData : MonoBehaviour
     // allows Game Objects to see what coins are collected, bu not change their value.
     public int coinsCollected = 0;
 
-    //public CinemachineVirtualCamera vcam;
-    //private bool zoomActive = false;
-   // [SerializeField] private float zoomSpeed;
+    public int overallCoins;
     public int CoinsCollected => coinsCollected;
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("Coins"))
+        {
+            overallCoins = PlayerPrefs.GetInt("Coins");
+        }
+        else
+        {
+
+            PlayerPrefs.SetInt("Coins", overallCoins);
+        }
         OnCoinGet += CollectCoin;
     }
 
@@ -37,7 +44,7 @@ public class GameData : MonoBehaviour
 
     private void OnDestroy()
     {
-       
+        overallCoins += coinsCollected;
         coinsCollected = 0;
     }
 
