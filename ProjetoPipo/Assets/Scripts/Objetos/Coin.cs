@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
             TriggerCoinGet(value);
 
             FindObjectOfType<AudioManager>().PlaySound("ItemPickup");
-            GameObject CoinPickupVFX = Instantiate(destroyEffect, this.transform.position, Quaternion.identity);
+            GameObject CoinPickupVFX = Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(CoinPickupVFX, 1f);
             Destroy(gameObject);
         }
