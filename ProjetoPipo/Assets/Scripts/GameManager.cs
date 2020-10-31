@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     
     public GameObject deathMenu;
     public GameObject startMenu;
+    public GameObject shops;
 
     private PlayerCollision playerCollision;
     private PlayerController playerController;
@@ -79,5 +80,11 @@ public class GameManager : MonoBehaviour
         if (zoomActive)  vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 5f, zoomOutSpeed);
     }
 
-   
+    private void Shop()
+    {
+        if (startMenu.activeInHierarchy) startMenu.SetActive(false);
+        else if (deathMenu.activeInHierarchy) deathMenu.SetActive(false);
+        shops.SetActive(true);
+    }
+
 }

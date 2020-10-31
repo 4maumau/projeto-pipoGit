@@ -30,27 +30,13 @@ public class GameData : MonoBehaviour
     {
         coinsCollected += coinValue;
         TriggerCoinUpdate (coinsCollected);
-        //if (zoomActive)
-       // {
-         //   vcam.m_Lens.OrthographicSize = 4.8f;
-         //   zoomActive = false;
-       // }
-      //  else if (!zoomActive)
-       // {
-      //      vcam.m_Lens.OrthographicSize = 4.5f;
-      //      zoomActive = true;
-       // }
     }
 
     private void OnDestroy()
     {
         overallCoins += coinsCollected;
+        PlayerPrefs.SetInt("Coins", overallCoins);
         coinsCollected = 0;
     }
-
-    //private void LateUpdate()
-   // {
-        //if (zoomActive) vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 4.5f, zoomSpeed);
-    //}
 
 }
