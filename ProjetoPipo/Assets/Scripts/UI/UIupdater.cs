@@ -58,7 +58,7 @@ public class UIupdater : MonoBehaviour
     void UpdateCoinText(int coinsCollected)
     {
         coinCountText.SetText("{0:0000}", coinsCollected);
-        //coinCountText.text = coinsCollected.ToString();
+        
     }
 
     private void OnDestroy()

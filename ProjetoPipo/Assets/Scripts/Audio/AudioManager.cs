@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
 	public static AudioManager instance;
 
 	public AudioMixerGroup managerMixerGroup;
-	//public AudioMixerGroup mixerGroup;
+	
 
 	public Sound[] sounds;
 

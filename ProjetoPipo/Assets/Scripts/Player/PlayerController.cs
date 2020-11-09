@@ -77,11 +77,12 @@ public class PlayerController : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began && hangCounter > 0 && alive)
+            if (touch.phase == TouchPhase.Began && hangCounter > 0 && alive && gameStarted)
             {
                 rb.velocity = Vector2.up * jumpForce;
 
                 audioManager.PlaySound("PlayerJump");
+                if (Random.Range(0f,1f) > 0.8) audioManager.PlaySound("JumpMeow");
 
                 // create and destroy the dust effect
                 GameObject DustEffect = Instantiate(dustPrefab, legsPosition.transform.position, Quaternion.identity);
@@ -102,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
             //jump sound
             audioManager.PlaySound("PlayerJump");
+            if (Random.Range(0f, 1f) > 0.8) audioManager.PlaySound("JumpMeow");
             // create and destroy the dust effect
             GameObject DustEffect = Instantiate(dustPrefab, legsPosition.transform.position, Quaternion.identity);
             Destroy(DustEffect, 1f);
