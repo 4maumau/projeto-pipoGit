@@ -116,8 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  smoothing: 0.048
-  warningPhase: 1.5
-  lastPhase: 0.5
+  warningPhase: 1.2
+  lastPhase: 0.3
   warningOffSet: 10.85
   sockPrefab: {fileID: 5785188771482433081, guid: a10dea3eab3c09b419cdba313558e64b, type: 3}

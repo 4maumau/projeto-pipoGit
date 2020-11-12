@@ -43,6 +43,8 @@ public class StartMenu : MonoBehaviour
         {
             TouchToStart(); // tá assim por causa do touch
         }
+
+        if (Input.GetKeyDown(KeyCode.Insert)) PlayerPrefs.DeleteAll();
         
     }
 

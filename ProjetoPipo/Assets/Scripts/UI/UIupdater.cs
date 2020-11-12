@@ -50,7 +50,7 @@ public class UIupdater : MonoBehaviour
         if (scoreCount > highScoreCount) // updating high score
         {
             highScoreCount = scoreCount;
-            PlayerPrefs.SetFloat("HighScore", highScoreCount);
+            //PlayerPrefs.SetFloat("HighScore", highScoreCount);
         }
 
     }

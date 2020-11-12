@@ -24,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
     //death sounds
     [SerializeField]private AudioSource deathImpactAudio = null;
     [SerializeField]private AudioSource deathStarsAudio = null;
+    [SerializeField]private AudioSource deathMeowAudio = null;
 
     private void Start()
     {
@@ -51,15 +52,19 @@ public class PlayerCollision : MonoBehaviour
         animator.SetBool("Death", true);
 
         deathImpactAudio.Play();
+        deathMeowAudio.Play();
+
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         CinemachineShake.Instance.ShakeCamera(shakeIntensity, shakeTime);
+        
         yield return new WaitForSeconds(shakeTime + .25f); // wait for shake to end + additional time
     
-    
         animator.SetBool("Death", false);
-        boxCollider2d.enabled = false;
+
         deathStars.Play();
         deathStarsAudio.Play();
+
+        boxCollider2d.enabled = false;
         rb.constraints = RigidbodyConstraints2D.None;
         rb.velocity = Vector2.up * deathPump;
         rb.AddTorque(torqueSpeed, ForceMode2D.Force);
