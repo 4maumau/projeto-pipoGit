@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class Sock : MonoBehaviour
 {
-    private Rigidbody2D rb;
     public float moveSpeed;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 5f);
     }
 

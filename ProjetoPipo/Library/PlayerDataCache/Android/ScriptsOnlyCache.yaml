@@ -242,6 +242,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 245
       Script: {instanceID: 0}
+    - Class: 249
+      Script: {instanceID: 0}
     - Class: 251
       Script: {instanceID: 0}
     - Class: 331
@@ -909,7 +911,7 @@ ScriptsOnlyBuild:
     className: SpriteLibraryAsset
   - hash:
       serializedVersion: 2
-      Hash: 4ae026bfffbbbcea23650386ccfb1f1e
+      Hash: 84b4976ce7fd01ee9aa6488814340e2d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerCollision
@@ -1095,7 +1097,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 2e891882f46a4030443df1ac2e9af204
+      Hash: 5fa1ca79dfb659274077dd8b539d008a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathMenu
@@ -1384,4 +1386,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Demo.unity
-  playerPath: C:/Projects/BUILDS/ProjetoPipo1.3Android/projetopipo.1.3.apk
+  playerPath: C:/Projects/BUILDS/ProjetoPipo1.3Android/projetopipo0.1.4.apk

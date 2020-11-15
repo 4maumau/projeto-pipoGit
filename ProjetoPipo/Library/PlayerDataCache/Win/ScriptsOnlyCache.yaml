@@ -70,7 +70,6 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
-    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Mask
@@ -127,8 +126,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12240}
     - Class: 114
       Script: {instanceID: 12252}
-    - Class: 114
-      Script: {instanceID: 12452}
     - Class: 114
       Script: {instanceID: 12492}
     - Class: 114
@@ -243,7 +240,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 245
       Script: {instanceID: 0}
+    - Class: 249
+      Script: {instanceID: 0}
     - Class: 251
+      Script: {instanceID: 0}
+    - Class: 331
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -476,7 +477,7 @@ ScriptsOnlyBuild:
     className: MissileWarn
   - hash:
       serializedVersion: 2
-      Hash: 73d43a3f8687e5b3ced928c4a29b3bd3
+      Hash: abf0383b7abe7472a1d6e7734ccd4b81
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: OptionsButton
@@ -560,7 +561,7 @@ ScriptsOnlyBuild:
     className: NoiseSettings
   - hash:
       serializedVersion: 2
-      Hash: 621c917a80b56c9bfd7ae272f2987dc5
+      Hash: 5e2b45a667268d37d7d8e484653a180b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StartMenu
@@ -908,7 +909,7 @@ ScriptsOnlyBuild:
     className: SpriteLibraryAsset
   - hash:
       serializedVersion: 2
-      Hash: 4ae026bfffbbbcea23650386ccfb1f1e
+      Hash: 84b4976ce7fd01ee9aa6488814340e2d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerCollision
@@ -1094,7 +1095,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 2e891882f46a4030443df1ac2e9af204
+      Hash: 5fa1ca79dfb659274077dd8b539d008a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathMenu
@@ -1383,4 +1384,4 @@ ScriptsOnlyBuild:
   platform: 5
   scenePathNames:
   - Assets/Scenes/Demo.unity
-  playerPath: C:/Projects/BUILDS/ProjetoPipo1-3/Projeto Pipo.exe
+  playerPath: C:/Projects/BUILDS/ProjetoPipo0.1.4/Projeto Pipo.exe

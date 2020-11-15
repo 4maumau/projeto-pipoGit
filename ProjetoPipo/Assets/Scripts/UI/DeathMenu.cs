@@ -41,11 +41,11 @@ public class DeathMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("HighScore"))
         {
             highScore = PlayerPrefs.GetFloat("HighScore");
-            Debug.Log("found hs player pref, value =" + PlayerPrefs.GetFloat("HighScore"));
+            
         } else
         {
             PlayerPrefs.SetFloat("HighScore", highScore);
-            Debug.Log("creating hs player pref");
+            
         }
 
 
@@ -89,7 +89,7 @@ public class DeathMenu : MonoBehaviour
         if (hsBeaten) HighScoreAnimation();
 
         PlayerPrefs.SetFloat("HighScore", highScore);
-        Debug.Log(" HIgh score Player pref update. Value = "+ PlayerPrefs.GetFloat("HighScore"));
+        
         yield return null;
     }
 
@@ -100,7 +100,7 @@ public class DeathMenu : MonoBehaviour
 
     private void HighScoreAnimation()
     {
-        Debug.Log("New high score");
+        
         Sequence hsAnimation = DOTween.Sequence();
         hsAnimation.AppendInterval(.3f)
             .Append(highScoreImage.DOFade(1f, alphaTime))
@@ -114,6 +114,6 @@ public class DeathMenu : MonoBehaviour
     void camerashake()
     {
         CinemachineShake.Instance.ShakeCamera(5f, .1f);
-        Debug.Log("we shakinnnnn'");
+        
     }
 }

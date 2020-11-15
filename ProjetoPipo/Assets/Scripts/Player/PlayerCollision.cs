@@ -13,6 +13,8 @@ public class PlayerCollision : MonoBehaviour
     private BoxCollider2D boxCollider2d;
     public float torqueSpeed;
     public float deathPump;
+    public float sockPump;
+
     [SerializeField] private ParticleSystem deathStars = null;
 
     private Animator animator;
@@ -47,7 +49,26 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-     IEnumerator CoroutineDeathAnimation()
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+
+        if (other.collider.name == "jumpON")
+        {
+
+            if (this.transform.GetChild(0).transform.position.y > other.transform.position.y)
+            {
+                rb.velocity = Vector2.up * sockPump;
+                
+            }
+            else
+            {
+                playerController.alive = false;
+
+                StartCoroutine(CoroutineDeathAnimation());
+            }
+        }
+    }
+    IEnumerator CoroutineDeathAnimation()
     {
         animator.SetBool("Death", true);
 
