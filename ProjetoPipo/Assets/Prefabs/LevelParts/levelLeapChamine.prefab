@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 8885399372155757221}
   - component: {fileID: 8597701184768592755}
   - component: {fileID: 1573714363294371961}
+  - component: {fileID: 7431549680665583634}
   m_Layer: 0
   m_Name: Death
   m_TagString: Death
@@ -1117,7 +1118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 15.622047, y: 1.3085475}
+  m_Offset: {x: 15.622047, y: 1.175499}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1128,7 +1129,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4157944, y: 3.617095}
+  m_Size: {x: 3.4157944, y: 3.350998}
+  m_EdgeRadius: 0
+--- !u!61 &7431549680665583634
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312969315098324795}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 17.052351, y: 4.7453904}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.0443306, y: 4.193162}
   m_EdgeRadius: 0
 --- !u!1 &5635039964329619286
 GameObject:
@@ -2521,11 +2548,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3018489577418044423, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4245704227999944222, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5406824075398395358, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2573,7 +2600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5571788722906329353, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5631379354836403927, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7065903732195649817, guid: df57835e46fbeef45af995c5696ba36e, type: 3}
       propertyPath: m_Name

@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AudioManager : MonoBehaviour
 
 	public AudioMixerGroup managerMixerGroup;
 	
+	Sound s;
 
 	public Sound[] sounds;
 
@@ -37,7 +39,7 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void PlaySound(string sound)
+	public void PlaySound(string sound, float toVolume = 1f, float fadeDuration = 0f)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
@@ -50,8 +52,25 @@ public class AudioManager : MonoBehaviour
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.Play();
+
+		if (fadeDuration > 0)
+        {
+			s.source.DOFade(toVolume, fadeDuration);
+        }
 	}
 
+	public void StopSound(string sound, float fadeDuration = 0f)
+    {
+		Sound s = Array.Find(sounds, item => item.name == sound);
+		if (s == null)
+		{
+			Debug.LogWarning("Sound: " + name + " not found!");
+			return;
+		}
+		s.source.DOFade(0, fadeDuration);
+
+		s.source.Stop();
+	}
 
 	
 }

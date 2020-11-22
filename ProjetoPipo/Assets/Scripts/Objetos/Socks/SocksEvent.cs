@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SocksEvent : MonoBehaviour
 {
-
+    [SerializeField] private AudioManager audioManager;
     private ParticleSystem windParticle;
     [SerializeField]private float eventMilestone = 500;
     public Transform player;
@@ -13,9 +14,12 @@ public class SocksEvent : MonoBehaviour
     private int maxSocks = 3;
     public GameObject sockWarning;
 
+    [SerializeField, Range(0f, 5f)] private float fadeDuration = 2f;
+
     void Start()
     {
         windParticle = GetComponent<ParticleSystem>();
+        
     }
 
    
@@ -30,14 +34,15 @@ public class SocksEvent : MonoBehaviour
     {
         eventMilestone += eventMilestone * 1.05f;
         windParticle.Play();
-        
-        yield return new WaitForSeconds(2);
+        audioManager.PlaySound("WindLoop", 0.65f, fadeDuration);
+
+        yield return new WaitForSeconds(1);
 
         int numSocks = Random.Range(minSocks, maxSocks);
         for (int sock = 0; sock < numSocks; sock ++)
         {
             
-            yield return new WaitForSeconds(Random.Range(2f, 6f));
+            yield return new WaitForSeconds(Random.Range(1.5f, 3f));
             
             Instantiate(sockWarning);
             yield return null;
@@ -46,7 +51,8 @@ public class SocksEvent : MonoBehaviour
         minSocks += 1;
         maxSocks += 2;
 
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(3);
         windParticle.Stop();
+        audioManager.StopSound("WindLoop", fadeDuration);
     }
 }

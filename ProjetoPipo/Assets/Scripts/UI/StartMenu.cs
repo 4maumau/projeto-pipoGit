@@ -53,7 +53,10 @@ public class StartMenu : MonoBehaviour
         _gameManager.StartGame();
     }
 
-    
+    public void FeedBack()
+    {
+        Application.OpenURL("https://forms.gle/pG8AmT4ZKe6mtfnP7");
+    }
     
 }
 
