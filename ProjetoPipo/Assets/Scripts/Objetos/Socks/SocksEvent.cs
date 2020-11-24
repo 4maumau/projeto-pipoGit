@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class SocksEvent : MonoBehaviour
 {
-    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private AudioSource windAudio;
     private ParticleSystem windParticle;
     [SerializeField]private float eventMilestone = 500;
     public Transform player;
@@ -34,7 +34,9 @@ public class SocksEvent : MonoBehaviour
     {
         eventMilestone += eventMilestone * 1.05f;
         windParticle.Play();
-        audioManager.PlaySound("WindLoop", 0.65f, fadeDuration);
+        windAudio.Play();
+        windAudio.DOFade(.6f, 2f);
+                
 
         yield return new WaitForSeconds(1);
 
@@ -51,8 +53,10 @@ public class SocksEvent : MonoBehaviour
         minSocks += 1;
         maxSocks += 2;
 
+        
         yield return new WaitForSeconds(3);
         windParticle.Stop();
-        audioManager.StopSound("WindLoop", fadeDuration);
+        windAudio.DOFade(0f, 2f);
+        windAudio.Stop();
     }
 }

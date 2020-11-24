@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
-	public void PlaySound(string sound, float toVolume = 1f, float fadeDuration = 0f)
+	public void PlaySound(string sound)
 	{
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
@@ -48,15 +48,12 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
+
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
 		s.source.Play();
 
-		if (fadeDuration > 0)
-        {
-			s.source.DOFade(toVolume, fadeDuration);
-        }
 	}
 
 	public void StopSound(string sound, float fadeDuration = 0f)

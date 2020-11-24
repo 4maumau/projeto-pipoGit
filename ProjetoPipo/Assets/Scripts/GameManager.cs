@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Cinemachine;
-using System.Collections;
-using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,13 +9,15 @@ public class GameManager : MonoBehaviour
     public float zoomOutSpeed;
     private bool zoomActive = false;
 
-
-    public GameObject hUI;        // ui game object
-    [SerializeField] private UIupdater uiUpdater; // ui script
+    public GameObject hUI;        
+    [SerializeField] private UIupdater uiUpdater; 
+    private AudioManager audioManager; 
     
     public GameObject deathMenu;
     public GameObject startMenu;
     public GameObject shops;
+    [SerializeField]private RectTransform shopPanel = null;
+    private bool shopPanelOut = true;
 
     private PlayerCollision playerCollision;
     private PlayerController playerController;
@@ -25,13 +26,12 @@ public class GameManager : MonoBehaviour
     {
         playerCollision = FindObjectOfType<PlayerCollision>();
         playerController = FindObjectOfType<PlayerController>();
-      
-
+        audioManager = FindObjectOfType<AudioManager>();
+                
         // subscribing EndGame() to player's death event
         playerCollision.OnPlayerDeath += EndGame;
     }
 
-    
     public void StartGame()
     {
         startMenu.SetActive(false);
@@ -85,6 +85,27 @@ public class GameManager : MonoBehaviour
         if (startMenu.activeInHierarchy) startMenu.SetActive(false);
         else if (deathMenu.activeInHierarchy) deathMenu.SetActive(false);
         shops.SetActive(true);
+    }
+
+    public void ActivateShop()
+    {
+        if (shopPanelOut)
+        {
+            shopPanel.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutQuint);
+            shopPanelOut = false;
+        }
+        else
+        {
+            shopPanel.DOAnchorPosX(-1649, 0.6f).SetEase(Ease.OutQuint);
+            shopPanelOut = true;
+        }
+    }
+
+
+
+    public void ButtonSound()
+    {
+        audioManager.PlaySound("ButtonClick");
     }
 
 }
