@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         startMenu.SetActive(false);
         hUI.SetActive(true);
         playerController.gameStarted = true;
+        playerController.rb.velocity = Vector2.up * playerController.jumpForce;
     }
 
     public void EndGame()

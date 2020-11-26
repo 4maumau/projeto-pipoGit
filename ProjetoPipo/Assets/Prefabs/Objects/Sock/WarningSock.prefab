@@ -118,5 +118,5 @@ MonoBehaviour:
   player: {fileID: 0}
   warningPhase: 1.2
   lastPhase: 0.3
-  warningOffSet: 10.85
+  warningOffSet: 10
   sockPrefab: {fileID: 5785188771482433081, guid: a10dea3eab3c09b419cdba313558e64b, type: 3}
