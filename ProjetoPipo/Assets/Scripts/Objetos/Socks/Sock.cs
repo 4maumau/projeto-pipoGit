@@ -37,6 +37,7 @@ public class Sock : MonoBehaviour
     void FixedUpdate()
     {
         if (alive) transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+        
     }
 
     public void SockDed()

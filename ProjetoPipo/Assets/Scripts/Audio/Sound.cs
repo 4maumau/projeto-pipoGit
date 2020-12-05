@@ -21,6 +21,8 @@ public class Sound
 
 	public bool loop = false;
 
+	public bool playOneShot = false;
+
 	public AudioMixerGroup mixerGroup;
 
 	[HideInInspector]

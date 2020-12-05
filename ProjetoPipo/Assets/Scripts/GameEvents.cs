@@ -12,7 +12,6 @@ public static class GameEvents
     public static void TriggerCoinGet(int coinValue)
     {
         OnCoinGet?.Invoke(coinValue);
-        Debug.Log("We got a coin! Worth $" + coinValue);
     }
 
     public static event Action<int> OnCoinUpdate;
@@ -20,6 +19,5 @@ public static class GameEvents
     public static void TriggerCoinUpdate (int coinsCollected)
     {
         OnCoinUpdate?.Invoke(coinsCollected);
-        Debug.Log("Updated Coin UI with " + coinsCollected + "coins.");
     }
 }

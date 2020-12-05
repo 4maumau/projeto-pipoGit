@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public float hangTime = 0.1f;
     private float hangCounter;
 
+    public event Action OnSpeedUp;
     public float speedMultiplier;
     public float speedIncreaseMileStone;
     [SerializeField] private float speedMileStoneCount = 300f;
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
             speedMileStoneCount += speedIncreaseMileStone;
             speed = speed * speedMultiplier;
             speedIncreaseMileStone = speedIncreaseMileStone * speedMultiplier;
+            OnSpeedUp?.Invoke();
         }
 
         // hang time
@@ -82,15 +85,13 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = Vector2.up * jumpForce;
 
                 audioManager.PlaySound("PlayerJump");
-                if (Random.Range(0f,1f) > 0.8) audioManager.PlaySound("JumpMeow");
+                if (UnityEngine.Random.Range(0f,1f) > 0.8) audioManager.PlaySound("JumpMeow");
 
                 // create and destroy the dust effect
                 GameObject DustEffect = Instantiate(dustPrefab, legsPosition.transform.position, Quaternion.identity);
                 Destroy(DustEffect, 1f);
             }
-
         }
-
     }
 
     private void PCJump()
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
             //jump sound
             audioManager.PlaySound("PlayerJump");
-            if (Random.Range(0f, 1f) > 0.8) audioManager.PlaySound("JumpMeow");
+            if (UnityEngine.Random.Range(0f, 1f) > 0.8) audioManager.PlaySound("JumpMeow");
             // create and destroy the dust effect
             GameObject DustEffect = Instantiate(dustPrefab, legsPosition.transform.position, Quaternion.identity);
             Destroy(DustEffect, 1f);
@@ -123,7 +124,5 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider2d.bounds.center, boxCollider2d.bounds.size, 0f, Vector2.down, .4f, whatIsGround);
         return raycastHit.collider != null;
     }
-
-    
 }
 

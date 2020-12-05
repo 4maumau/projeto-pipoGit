@@ -93,7 +93,7 @@ public class ToggleMusic : MonoBehaviour
 
         if (toggle.isOn)
         {
-            audioMixer.SetFloat("volumeMusic", volumeOn);
+            audioMixer.SetFloat("volumeMusic", volumeOn -10f);
             PlayerPrefs.SetInt("MusicOn", 1);
 
             Debug.Log("Music on");

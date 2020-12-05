@@ -52,7 +52,8 @@ public class AudioManager : MonoBehaviour
 		s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
 		s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
-		s.source.Play();
+		if (s.playOneShot) s.source.PlayOneShot(s.source.clip, s.volume);
+		else s.source.Play();
 
 	}
 
@@ -67,6 +68,18 @@ public class AudioManager : MonoBehaviour
 		s.source.DOFade(0, fadeDuration);
 
 		s.source.Stop();
+	}
+
+	public Sound GetSound(string sound)
+    {
+		Sound s = Array.Find(sounds, item => item.name == sound);
+		if (s == null)
+		{
+			Debug.LogWarning("Sound: " + name + " not found!");
+			return null;
+		}
+
+		return s;
 	}
 
 	
