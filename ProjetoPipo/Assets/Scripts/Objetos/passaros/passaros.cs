@@ -12,21 +12,39 @@ public class passaros : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 velocity;
 
+    private bool unSeen = true;
+    private bool onGround = true;
 
+    public AudioClip[] flyAwayVariations;
+    [SerializeField]private AudioSource birdSing;
+    [SerializeField] private AudioSource flyAway;
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         velocity = new Vector2(8f, 7f);
-                
+        flyAway.clip = flyAwayVariations[Random.Range(0, flyAwayVariations.Length)];   
     }
 
     void Update()
     {
+        
+        if (GetComponent<Renderer>().isVisible & unSeen)
+        {
+            unSeen = false;
+            if (Random.value < 0.02f) 
+                birdSing.Play();
+            print("on the scene!");
+        }
         if (fly)
         {
             animator.SetBool("Fly", true);
             Destroy(gameObject, 1.5f);
+            if (onGround)
+            {
+                onGround = false;
+                flyAway.Play();
+            }
         }
         if (playAnim && !fly)
             StartCoroutine(WaitAnim()); //wait random seconds for animation

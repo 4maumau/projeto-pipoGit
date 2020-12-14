@@ -1,10 +1,17 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+
+    [SerializeField]private TextMeshProUGUI pauseText;
+    private string ptPause = "Jogo Pausado";
+    private string usPause = "Game Paused";
+
+    public bool pt;
 
     void Update()
     {
@@ -12,6 +19,9 @@ public class PauseMenu : MonoBehaviour
         {
             PauseGame();
         }
+
+        if (pt) pauseText.SetText(ptPause);
+        else pauseText.SetText(usPause);
     }
 
     public void Resume()

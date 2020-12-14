@@ -100,7 +100,7 @@ TextureImporter:
     second: play
   - first:
       213: -894122103821205953
-    second: uiButtons_1
+    second: translate
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -560,15 +560,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: uiButtons_1
+      name: translate
       rect:
         serializedVersion: 2
-        x: 59
-        y: 39
-        width: 3
-        height: 2
+        x: 51
+        y: 27
+        width: 13
+        height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

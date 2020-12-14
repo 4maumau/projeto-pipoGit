@@ -10,25 +10,31 @@ namespace Monobehaviours
         public AnimatorOverrideController[] overrideControllers;
         [SerializeField] private AnimatorOverrider overrider;
 
+
+        public AudioClip[] birdAudios;
+        private AudioSource audioSource;
         private int passaroID;
 
         public void Set(int value)
         {
             overrider.SetAnimations(overrideControllers[value]);
         }
-
+       
         private void Start()
         {
             overrider = GetComponent<AnimatorOverrider>();
-
+            audioSource = GetComponent<AudioSource>();
             // rng para spawnar o passaro
             float randomValue = Random.value;
+
             if (randomValue > 0.9f) passaroID = 2; // cardeal (príncipe)
             else if (randomValue > 0.7f) passaroID = 0; // bem-te-vi
             else if (randomValue > 0.4f) passaroID = 3; // joão de barro
             else passaroID = 1; // pombo
 
             Set(passaroID);
+            audioSource.clip = birdAudios[passaroID];
         }
     }
+
 }

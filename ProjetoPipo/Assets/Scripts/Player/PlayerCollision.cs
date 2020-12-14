@@ -92,6 +92,8 @@ public class PlayerCollision : MonoBehaviour
 
         OnPlayerDeath?.Invoke();
 
+        yield return new WaitForSeconds(1.5f);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
         yield return null;
     }
 

@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using Cinemachine;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,20 +11,26 @@ public class GameManager : MonoBehaviour
     public float zoomOutSpeed;
     private bool zoomActive = false;
 
+    // UIs
     public GameObject hUI;        
     [SerializeField] private UIupdater uiUpdater; 
     [SerializeField]private AudioManager audioManager; 
     
     public GameObject deathMenu;
     public GameObject startMenu;
-    public GameObject shops;
+    [SerializeField] private TextMeshProUGUI shopText;
     [SerializeField]private RectTransform shopPanel = null;
     private bool shopPanelOut = true;
+
+    private Highscores highscoreManager;
+    [SerializeField] private RectTransform leaderboardPanel = null;
+    [SerializeField] private TextMeshProUGUI ligaText;
+    private bool leaderboardPanelOut = true;
 
     private PlayerCollision playerCollision;
     private PlayerController playerController;
 
-
+    // music transition
     private bool transitioning = false;
     private string currentMusic;
     private string musicTransition;
@@ -40,6 +47,8 @@ public class GameManager : MonoBehaviour
         playerCollision.OnPlayerDeath += EndGame;
         playerController.OnSpeedUp += ChangeMusic;
         currentMusicSpeed = 1;
+
+        highscoreManager = FindObjectOfType<Highscores>();
 
         if (!audioManager.GetSound("MusicMenu").source.isPlaying) audioManager.PlaySound("MusicMenu");
         currentMusic = "MusicSpeed1";
@@ -85,6 +94,7 @@ public class GameManager : MonoBehaviour
         loopMusic = false;
         StopCoroutine(MusicTransition());
         audioManager.StopSound(currentMusic);
+        audioManager.StopSound(musicTransition);
 
     }
 
@@ -108,6 +118,7 @@ public class GameManager : MonoBehaviour
 
     public void ActivateShop()
     {
+        Translate();
         if (shopPanelOut)
         {
             shopPanel.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutQuint);
@@ -120,6 +131,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ActivateLeaderboard()
+    {
+        Translate();
+        if (leaderboardPanelOut)
+        {
+            highscoreManager.DownloadHighscores();
+            leaderboardPanel.DOAnchorPosX(0, 0.6f).SetEase(Ease.OutQuint);
+            leaderboardPanelOut = false;
+        }
+        else
+        {
+            leaderboardPanel.DOAnchorPosX(1649, 0.6f).SetEase(Ease.OutQuint);
+            leaderboardPanelOut = true;
+        }
+    }
+
+    void Translate()
+    {
+        if (PlayerPrefs.HasKey("Language"))
+        {
+            if (PlayerPrefs.GetInt("Language") == 1)
+            {
+                shopText.SetText("Em breve");
+                ligaText.SetText("Liga igor ferreira");
+            }
+
+            else
+            {
+                shopText.SetText("Soon");
+                ligaText.SetText("Leaderboard");
+            }
+        }
+    }
+
     public void ButtonSound()
     {
         audioManager.PlaySound("ButtonClick");
@@ -129,7 +174,6 @@ public class GameManager : MonoBehaviour
     {
         if (zoomActive)  vcam.m_Lens.OrthographicSize = Mathf.Lerp(vcam.m_Lens.OrthographicSize, 5f, zoomOutSpeed);
     }
-
 
     private void ChangeMusic()
     {
@@ -182,7 +226,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 currentMusic = "MusicSpeed4";
-                musicTransition = null;
+                musicTransition = "MusicSpeed4";
                 nextMusic = "MusicSpeed4";
                 break;
         }
@@ -193,18 +237,11 @@ public class GameManager : MonoBehaviour
         
         audioManager.StopSound(currentMusic);
         Debug.Log("stopped current music: " + currentMusic);
-
-        if (musicTransition != null)
-        {
-            audioManager.PlaySound(musicTransition);
-            Debug.Log("Now playing the transition music: " + musicTransition);
-            yield return new WaitWhile(() => audioManager.GetSound(musicTransition).source.isPlaying);
-        }
-        else
-        {
-            audioManager.PlaySound(currentMusic);
-            yield return new WaitWhile(() => audioManager.GetSound(currentMusic).source.isPlaying);
-        }
+                
+        audioManager.PlaySound(musicTransition);
+        Debug.Log("Now playing the transition music: " + musicTransition);
+        yield return new WaitWhile(() => audioManager.GetSound(musicTransition).source.isPlaying);
+               
 
         currentMusicSpeed++;
         currentMusic = nextMusic;
@@ -215,4 +252,5 @@ public class GameManager : MonoBehaviour
         transitioning = false;
         yield return null;
     }
+
 }
